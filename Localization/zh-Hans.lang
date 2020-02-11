@@ -342,6 +342,9 @@ ItemTooltip.BotchedBand=增加10%移动速度和伤害
 ItemName.BlackLotusEmblem=黑莲花徽章
 ItemTooltip.BlackLotusEmblem=提升魔力星拾取范围\n在需要时自动快速补充魔力\n极大减少魔力病持续时间\n你的魔法攻击造成蚀月\n增加15%移动速度\n减少12%魔力消耗\n增加18%魔法伤害
 
+ItemName.CursedEyeofSoulBinder=写魂的咒眼
+ItemTooltip.CursedEyeofSoulBinder=使用饰品能力键跳过旧日军团事件中间的准备时间\n增加21%召唤伤害\n增加最大召唤上限\n增加最大炮台上限\n+50生命上限\n你的召唤物可以攻击敌人的灵魂\n旧日军团入侵期间, 增加31%召唤伤害
+
 ItemName.DemonGauntlet=恶魔手套
 ItemTooltip.DemonGauntlet=敌人更有可能瞄准你\n增加14%近战伤害和速度\n增加近战击退\n近战攻击会根据世界生成邪恶产生Debuff\n猩红灵液/腐地咒焰
 
@@ -370,7 +373,7 @@ ItemName.MindStone=心灵宝石
 ItemTooltip.MindStone=减少50%魔力消耗\n+200魔力上限\n“简单的微积分”\n(白昼启明虫掉落)
 
 ItemName.OrnateBand=华丽珠环
-ItemTooltip.OrnateBand=增加5%伤害减免
+ItemTooltip.OrnateBand=+50生命上限
 
 ItemName.PalladiumShield=钯金盾
 ItemTooltip.PalladiumShield=使你免疫击退
@@ -490,7 +493,7 @@ ItemName.AssassinHood=子夜刺客面罩
 ItemTooltip.AssassinHood=增加13%远程/近战伤害和暴击率\n子夜魅影融入深色面罩中
 
 ItemName.AssassinShirt=子夜刺客紧身衣
-ItemTooltip.AssassinShirt=增加14%远程/近战伤害和暴击率\n减少20%弹药消耗\n子夜魅影融入深色装备中
+ItemTooltip.AssassinShirt=增加14%远程/近战伤害和暴击率\n减少20%弹药消耗\n+50生命上限\n子夜魅影融入深色装备中
 
 Common.AssassinBonus=增加30%近战速度和弹药速度\n你使用近战武器时有几率投掷匕首\n你使用远程武器时有几率发射额外箭矢\n匕首/箭矢会削减敌人20防御并增加10%受到的伤害
 
@@ -581,16 +584,16 @@ ItemName.PerfectChaosHood=冥昧抹杀者兜帽
 ItemTooltip.PerfectChaosHood=增加32%魔法伤害\n增加20%魔法暴击率\n增加2%伤害减免\n减少30%魔法消耗\n+150魔法上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosKabuto=冥昧抹杀者盔胄
-ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加5%伤害减免\n增加15近战速度\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加5%伤害减免\n增加15近战速度\n+25生命上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosMask=冥昧抹杀者面具
 ItemTooltip.PerfectChaosMask=增加70%召唤伤害\n增加1%伤害减免\n+6召唤上限\n+2炮台上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosVisor=冥昧抹杀者视镜
-ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加3%伤害减免\n减少25%弹药消耗\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加3%伤害减免\n减少25%弹药消耗\n+15生命上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosPlate=冥昧抹杀者胸甲
-ItemTooltip.PerfectChaosPlate=增加4%伤害减免\n允许你在水下呼吸
+ItemTooltip.PerfectChaosPlate=增加4%伤害减免\n+75生命上限\n允许你在水下呼吸
 
 Common.PerfectChaosHoodBonus=“混沌赐予你力量”\n随着你的生命减少， 你的魔法伤害增加， 魔力消耗降低\n你的魔法攻击对敌人造成冥昧业火
 Common.PerfectChaosKabutoBonus=“混沌赐予你力量”\n随着你的生命减少， 你的近战伤害和防御力增加\n你的近战攻击对敌人造成冥昧业火
@@ -708,7 +711,7 @@ ItemName.DoomsdayMask=末日突击视镜
 ItemTooltip.DoomsdayMask=增加50%召唤物伤害\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayChestplate=末日突击装甲
-ItemTooltip.DoomsdayChestplate=增加35%召唤物伤害\n装甲内栖宿着毁灭行星之力
+ItemTooltip.DoomsdayChestplate=增加35%召唤物伤害\n+50生命上限\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayHelmet=末日突击面具
 ItemTooltip.DoomsdayHelmet=增加25%魔法伤害\增加18%魔法暴击率\n装甲内栖宿着毁灭行星之力
@@ -724,13 +727,13 @@ Common.DoomsdayHelmetBonus=生命终结系统启动\n你可以探测到周围所
 
 
 ItemName.DracoHelm=炙戮盔胄
-ItemTooltip.DracoHelm=增加20%近战暴击率\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoHelm=增加20%近战暴击率\n增加3%伤害减免\n+25生命上限\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoLeggings=炙戮护腿
-ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加3%伤害减免\n+25生命上限\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoPlate=炙戮道甲
-ItemTooltip.DracoPlate=增加25%近战伤害\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoPlate=增加25%近战伤害\n增加3%伤害减免\n+25生命上限\n装甲中栖宿着燎狱的狂焰之怒
 
 Common.DracoHelmBonus=“狂焰之怒充满了你的身体”\n你免疫所有冰系debuff\n你的灵魂灼烧如同狂焰之怒\n你的近战攻击对目标造成破晓
 
@@ -741,10 +744,10 @@ ItemName.DreadBoots=惧之月袴裤
 ItemTooltip.DreadBoots=增加50%移动速度\n减少25%弹药消耗\n装甲中栖宿着潭渊的沉渊之怒
 
 ItemName.DreadHelm=惧之月假面
-ItemTooltip.DreadHelm=增加24%远程暴击率\n增加20%移动速度\n装甲中栖宿着潭渊的沉渊之怒
+ItemTooltip.DreadHelm=增加24%远程暴击率\n增加20%移动速度\n+15生命上限\n装甲中栖宿着潭渊的沉渊之怒
 
 ItemName.DreadPlate=惧之月武服
-ItemTooltip.DreadPlate=增加35%远程伤害\n增加20%移动速度\n装甲中栖宿着潭渊的沉渊之怒
+ItemTooltip.DreadPlate=增加35%远程伤害\n增加20%移动速度\n+50生命上限\n装甲中栖宿着潭渊的沉渊之怒
 
 Common.DreadHelmBonus=“沉渊之怒让你大发雷霆”\n你免疫所有火系debuff\n你如天上恐惧之月般发光\n你的远程伤害对目标造成蚀月
 
@@ -1414,7 +1417,7 @@ ItemName.WitchHood=愤怒女巫兜帽
 ItemTooltip.WitchHood=+120魔力上限\n减少20%魔力消耗\n+2召唤上限\n增加10%魔法/召唤伤害\n增加10%魔法暴击率\n被至尊龙侍从的灼热灵魂所迷恋的兜帽
 
 ItemName.WitchRobe=愤怒女巫长袍
-ItemTooltip.WitchRobe=增加10%魔法/召唤伤害\n增加10%暴击率\n+2召唤上限\n被至尊龙侍从的灼热灵魂所迷恋的长袍
+ItemTooltip.WitchRobe=增加10%魔法/召唤伤害\n增加10%暴击率\n+2召唤上限\n+30生命上限\n被至尊龙侍从的灼热灵魂所迷恋的长袍
 
 Common.WitchHoodBonus=炽痛与灼烧\n增加20%魔法/召唤伤害\n+4召唤上限\n一个狱焰之灵保护着你\n越少的法力, 使得狱焰之灵更强大\n按下套装能力键释放火焰的力量\n(只有当你手持魔法或者召唤武器才会生效)
 
@@ -1692,6 +1695,9 @@ ItemTooltip.SiegeBox=播放 'Storming S.I.E.G.E.' by Karamitasu
 
 ItemName.Soul_Forge=精魂熔炉
 ItemTooltip.Soul_Forge=用于特殊制作
+
+ItemName.SistersBox=八音盒(混沌姐妹)
+ItemTooltip.SistersBox=播放 'Sisters of Anarchy' by Shadow Figure
 
 ItemName.SpiralStairs=旋梯
 
@@ -2091,8 +2097,8 @@ ItemName.EventideBullet=宵暗弹
 ItemName.LungStaff=古龙之杖
 ItemTooltip.LungStaff=召唤一条古龙为你而战
 
-ItemName.MorningGlory=光荣之晨
-ItemTooltip.MorningGlory=触及敌人时爆炸
+ItemName.MorningGlory=晨曦荣光
+ItemTooltip.MorningGlory=飞行时分裂成幻影刺矛
 
 ItemName.RadiantDawn=曜光破晓弓
 ItemTooltip.RadiantDawn=长按发射更多箭矢
@@ -2113,6 +2119,7 @@ ItemName.SunStaff=燎阳权杖
 ItemTooltip.SunStaff=向你的敌人降下燎炎和怒火\n造成破晓
 
 ItemName.SunStorm=燎焰风暴
+ItemTooltip.SunStorm=发射环绕火球, 在一段时间后追踪敌人
 
 ItemName.TaiyangBaolei=太阳堡垒
 ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n你的近战和魔法攻击对敌人造成灼伤\n白天,增加5%伤害减免\n你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
@@ -2190,6 +2197,9 @@ ItemTooltip.UltibladeTyphoon=发射3个快速回旋的剃刃风暴\n水刃龙卷
 
 ItemName.DarkVoid=深空之星
 ItemTooltip.DarkVoid=晚上你的属性提升\n“漆黑而又怪异”
+
+ItemName.EquinoxBag=宝藏袋
+ItemTooltip.EquinoxBag={$CommonItemTooltip.RightClickToOpen}\n根据一天中时间的不同产生掉落物
 
 ItemName.DBBag=宝藏袋
 ItemTooltip.DBBag={$CommonItemTooltip.RightClickToOpen}
@@ -2659,8 +2669,8 @@ ItemTooltip.Sevenshot=发射6颗子弹和1颗毁灭性月亮爆破弹\n50%几率
 
 ItemName.ThrowingCrescent=新月投刃
 
-ItemName.Toxibomb=潭渊深毒爆弹
-ItemTooltip.Toxibomb=发射爆炸性精神炸弹
+ItemName.Toxibomb=深渊毒爆
+ItemTooltip.Toxibomb=发射爆炸性猛毒炸弹
 
 ItemName.YamataATrophy=觉醒之八歧大蛇纪念章
 
@@ -3210,6 +3220,42 @@ ItemName.DragonsGrip=龙之握
 ===UNKNWN===
 ItemName.BaseAAItem=
 
+// AAMod.Items.Magic.SpellBook
+
+ItemName.SpellBookofSefer=创始之魔导书
+ItemTooltip.SpellBookofSefer=依次复制并消耗你背包中的非法杖类魔法武器\n右键将消耗的武器放回你的背包
+
+ItemName.SpellbookofAlman=蜡版之魔导书
+ItemTooltip.SpellbookofAlman=复制你背包中一个非魔法武器的弹幕\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n复制并发射当前世界上的一种敌对弹幕
+
+ItemName.SpellBookofApocal=末示之魔导书
+ItemTooltip.SpellBookofApocal=发射能在墙上回弹的旋转星\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你的魔法弹幕获得跟踪效果
+
+ItemName.SpellbookofGoetia=恶神之魔导书
+
+ItemName.SpellBookofHygro=水卜之魔导书
+
+ItemName.SpellBookofInvocerb=祷冥之魔导书
+
+ItemName.SpellBookofRageziel=怒源之魔导书
+
+ItemName.SpellBookofSylent=林默之魔导书
+
+ItemName.SpellBookofCursim=猩咒之魔导书
+ItemTooltip.SpellBookofCursim=喷洒灵液降低敌人防御\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你的魔法弹幕伤害增加并破坏敌人的防御
+
+ItemName.SpellBookofEbontten=腐檀之魔导书
+ItemTooltip.SpellBookofEbontten=发射咒火球\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你的魔法弹幕会在一段时间后分裂
+
+ItemName.SpellBookofIridescen=虹彩之魔导书
+ItemTooltip.SpellBookofIridescen=发射彩虹和一束神圣箭\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你受到超过你生命值的伤害时，你免疫此次伤害
+
+ItemName.SpellBookofNecro=死灵之魔导书
+ItemTooltip.SpellBookofNecro=发射幽魂追踪你的敌人\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你的魔法弹幕会把敌人的灵魂打出来
+
+ItemName.SpellBookofRagnarok=魔导书的神判
+ItemTooltip.SpellBookofRagnarok=增加20%魔法书的伤害\n发射轮次结束时，自动将使用过的魔导书放回你的背包\n那之后根据你使用的数量你获得以下效果:\n5本，增加30%魔法书伤害\n10本，在你的头上召唤一个符文
+
 
 // AAMod.Items.Magic
 
@@ -3223,10 +3269,10 @@ ItemTooltip.AtlanteanTrident=发射三发魔法水箭
 ItemName.BlazePike=怒焰法矛
 ItemTooltip.BlazePike=摸上去非常烫手
 
-ItemName.BogBomb=潭渊毒爆弹
+ItemName.BogBomb=潭渊毒爆
 ItemTooltip.BogBomb=发射一颗爆弹对触碰的敌人造成中毒
 
-ItemName.CrystalTome=水晶法书
+ItemName.CrystalTome=明晶法典
 ItemTooltip.CrystalTome=抛射魔力碎晶
 
 ItemName.Depthsprayer=深海喷流杖
@@ -3615,7 +3661,8 @@ ItemTooltip.ChaosScythe=“一切尽在我掌中”\n传说武器
 
 ItemName.ChaosYari=冥昧枪矛
 
-ItemName.ChaosYariEX=真·冥昧枪矛\n冥昧枪矛 EX
+ItemName.ChaosYariEX=真·冥昧枪矛
+ItemTooltip.ChaosYariEX=冥昧枪矛 EX
 
 ItemName.Chicken=惨叫鸡
 
@@ -6021,6 +6068,8 @@ MapObject.MireUBox=八音盒
 MapObject.MonarchBox=八音盒
 
 MapObject.MushBox=八音盒
+
+MapObject.SistersBox=八音盒
 
 MapObject.OroborosChestC1=虚环木宝箱
 

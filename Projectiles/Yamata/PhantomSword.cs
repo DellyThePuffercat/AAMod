@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
@@ -49,7 +48,6 @@ namespace AAMod.Projectiles.Yamata
             }
 
             Vector2 move = Vector2.Zero;
-            bool target = false;
             AI_Timer++;
             if (AI_Timer >= 20)
             {

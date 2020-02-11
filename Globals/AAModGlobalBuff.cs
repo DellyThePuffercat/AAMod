@@ -1,8 +1,6 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
 namespace AAMod
 {
@@ -12,7 +10,7 @@ namespace AAMod
 		{
             if(type == BuffID.BrokenArmor && !npc.boss)
             {
-                npc.defense = (int)(npc.defense / 2);
+                npc.defense = npc.defense / 2;
             }
             if(type == BuffID.Weak && !npc.boss)
             {

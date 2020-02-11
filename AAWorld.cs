@@ -65,7 +65,6 @@ namespace AAMod
         public string nums = "1234567890";
         public static bool ModContentGenerated;
 
-        public static bool CloudCheck = false;
         //Messages
         public static bool AMessage;
         public static bool Empowered;
@@ -192,7 +191,6 @@ namespace AAMod
             MireCenter = -Vector2.One;
             SmashDragonEgg = 2;
             SmashHydraPod = 2;
-            CloudCheck = false;
             //Squid Lady
             squid1 = 0;
             squid2 = 0;
@@ -210,8 +208,6 @@ namespace AAMod
             squid14 = 0;
             squid15 = 0;
             squid16 = 0;
-
-            //Athena Clouds
         }
 
         public static int Raycast(int x, int y)
@@ -546,20 +542,6 @@ namespace AAMod
             SmashDragonEgg = reader.ReadInt32();
         }
 
-        public static void ClearClouds()
-        {
-            for (int j = 0; j < Main.maxTilesX; j++)
-            {
-                for (int k = 0; k < Main.maxTilesY; k++)
-                {
-                    if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<AcropolisClouds>())
-                    {
-                        WorldGen.KillTile(j, k, false, false, true);
-                    }
-                }
-            }
-        }
-
         #endregion
 
         private string NumberRand(int size)
@@ -605,19 +587,9 @@ namespace AAMod
 				MireAndInferno(progress);
             }));
 
-            tasks.Insert(shiniesIndex2 + 6, new PassLegacy("Hoard", delegate (GenerationProgress progress)
-            {
-                Hoard(progress);
-            }));
-
             tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
             {
                 Terrarium(progress);
-            }));
-
-            tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Acropolis", delegate (GenerationProgress progress)
-            {
-                Acropolis(progress);
             }));
 
             tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
@@ -1155,36 +1127,6 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (!CloudCheck)
-            {
-                ClearClouds();
-                CloudCheck = true;
-            }
-            if (NPC.downedMoonlord && !AthenaHerald && !downedAthenaA)
-            {
-                if (HeraldTimer > 0)
-                {
-                    HeraldTimer--;
-                }
-                else
-                {
-                    Player player = Main.player[BaseAI.GetPlayer(new Vector2(Main.maxTilesX / 2, Main.maxTilesY / 2), -1)];
-                    Vector2 spawnpoint = player.Center - new Vector2(250, 200);
-                    int Seraph = NPC.NewNPC((int)spawnpoint.X, (int)spawnpoint.Y, ModContent.NPCType<NPCs.Bosses.Athena.SeraphHerald>());
-                    NPC Seraph1 = Main.npc[Seraph];
-                    for (int i = 0; i < 5; i++)
-                    {
-                        Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, ModContent.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
-                    }
-                    AthenaHerald = true;
-                }
-            }
-
-            if (TimeStopped)
-            {
-                Main.fastForwardTime = false;
-                Main.time = PausedTime;
-            }
             if (downedEquinox)
             {
                 if (RadiumOre == false)
@@ -1194,7 +1136,7 @@ namespace AAMod
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
                         int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9); //X position, centre.
-                        int Y = WorldGen.genRand.Next(10, 100); //Y position, centre.
+                        int Y = WorldGen.genRand.Next(50, 150); //Y position, centre.
                         int radius = WorldGen.genRand.Next(2, 5); //Radius.
                         for (int x = X - radius; x <= X + radius; x++)
                         {
@@ -1358,8 +1300,6 @@ namespace AAMod
             lakeTiles = tileCounts[ModContent.TileType<Darkmud>()] + tileCounts[ModContent.TileType<AbyssGrass>()] + tileCounts[ModContent.TileType<AbyssWood>()] + tileCounts[ModContent.TileType<AbyssWoodSolid>()];
             terraTiles = tileCounts[ModContent.TileType<TerraCrystal>()] + tileCounts[ModContent.TileType<TerraWood>()] + tileCounts[ModContent.TileType<TerraLeaves>()];
             Radium = tileCounts[ModContent.TileType<RadiumOre>()];
-            HoardTiles = tileCounts[ModContent.TileType<GreedBrick>()] + tileCounts[ModContent.TileType<GreedStone>()];
-            CloudTiles = tileCounts[ModContent.TileType<AcropolisBlock>()] + tileCounts[ModContent.TileType<AcropolisAltarBlock>()] + tileCounts[ModContent.TileType<AcropolisClouds>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)
@@ -1448,24 +1388,6 @@ namespace AAMod
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             TerrariumDelete delete = new TerrariumDelete();
             TerrariumSphere biome = new TerrariumSphere();
-            delete.Place(origin, WorldGen.structures);
-            biome.Place(origin, WorldGen.structures);
-        }
-
-        private void Acropolis(GenerationProgress progress)
-        {
-            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildAcropolis");
-            Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
-            Acropolis biome = new Acropolis();
-            biome.Place(origin, WorldGen.structures);
-        }
-
-        private void Hoard(GenerationProgress progress)
-        {
-            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildHoard");
-            Point origin = new Point((int)(Main.maxTilesX * 0.3f), (int)(Main.maxTilesY * 0.65f));
-            Hoard biome = new Hoard();
-            HoardClear delete = new HoardClear();
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
         }

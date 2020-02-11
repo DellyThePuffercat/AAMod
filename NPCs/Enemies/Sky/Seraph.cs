@@ -4,8 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
-using AAMod.NPCs.Bosses.Athena;
-using AAMod.NPCs.Bosses.Athena.Olympian;
 
 namespace AAMod.NPCs.Enemies.Sky
 {
@@ -31,21 +29,10 @@ namespace AAMod.NPCs.Enemies.Sky
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.noTileCollide = true;
-            if (npc.type == ModContent.NPCType<SeraphA>())
-            {
-                npc.alpha = 255;
-            }
         }
 
         public override bool PreAI()
         {
-            if (npc.type == ModContent.NPCType<SeraphA>() && !(NPC.AnyNPCs(ModContent.NPCType<Athena>()) || NPC.AnyNPCs(ModContent.NPCType<AthenaA>())))
-            {
-                npc.velocity.Y -= .2f;
-                npc.velocity.X *= .95f;
-                if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
-                return false;
-            }
             return true;
         }
 

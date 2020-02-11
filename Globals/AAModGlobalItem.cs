@@ -12,6 +12,12 @@ namespace AAMod
 {
     public class AAModGlobalItem : GlobalItem
 	{
+        public override bool InstancePerEntity => true;
+		public override bool CloneNewInstances => true;
+		public bool AAOnly = false;
+        public bool NOHitPlayer = false;
+        public bool HardCoreMode = false;
+        public bool spellbookmagic = false;
         public override void SetDefaults(Item item)
         {
             if (item.type == ItemID.SoulofNight)
@@ -103,7 +109,30 @@ namespace AAMod
                     }
                 }
             }
+            if(item.magic && item.useStyle == 5 && !Item.staff[item.type] && item.width < item.height * 1.25 && !item.channel)
+            {
+                spellbookmagic = true;
+            }
         }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+		{
+            if(AAOnly)
+            {
+                TooltipLine line = new TooltipLine(mod, "AAOnly", "AAMod Loaded Only Item");
+			    tooltips.Insert(tooltips.Count,line);
+            }
+            if(NOHitPlayer)
+            {
+                TooltipLine line = new TooltipLine(mod, "NOHitPlayer", "NohitPlayer bonus item");
+			    tooltips.Insert(tooltips.Count,line);
+            }
+            if(HardCoreMode)
+            {
+                TooltipLine line = new TooltipLine(mod, "HardCoreMode", "HardCoreMode Item");
+			    tooltips.Insert(tooltips.Count,line);
+            }
+		}
 
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
@@ -172,7 +201,7 @@ namespace AAMod
                 }
             }
 
-            if (item.type == ItemID.WormScarf ||  item.type == mod.ItemType("StoneScarf"))
+            if (item.type == ItemID.WormScarf)
             {
                 if (slot < 10)
                 {
@@ -180,11 +209,6 @@ namespace AAMod
                     for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                     {
                         if (slot != i && player.armor[i].type == ItemID.WormScarf)
-                        {
-                            return false;
-                        }
-
-                        if (slot != i && player.armor[i].type == mod.ItemType("StoneScarf"))
                         {
                             return false;
                         }
@@ -272,25 +296,7 @@ namespace AAMod
         public override bool OnPickup(Item item, Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            if (item.ammo == AmmoID.Coin)
-            {
-                if (modPlayer.GreedCharm)
-                {
-                    player.AddBuff(ModContent.BuffType<Items.Boss.Greed.CharmBuff>(), 240);
-                    if (modPlayer.GreedyDamage < 20)
-                    {
-                        modPlayer.GreedyDamage += 1;
-                    }
-                }
-                else if (modPlayer.GreedTalisman)
-                {
-                    player.AddBuff(ModContent.BuffType<Items.Boss.Greed.WKG.TalismanBuff>(), 240);
-                    if (modPlayer.GreedyDamage < 40)
-                    {
-                        modPlayer.GreedyDamage += 1;
-                    }
-                }
-            }
+            
             return base.OnPickup(item, player);
         }
 
@@ -1003,7 +1009,7 @@ namespace AAMod
                     {
                         switch(Main.rand.Next(8))
                         {
-                            case 0: result=12; return;
+                            case 0: result = 12; return;
                             case 1: result=11; return;
                             case 2: result=14; return;
                             case 3: result=13; return;
@@ -1011,19 +1017,6 @@ namespace AAMod
                             case 5: result=700; return;
                             case 6: result=701; return;
                             default: result=702; return;
-                        }
-                        stack += 5;
-                        if (Main.rand.Next(5) == 0)
-                        {
-                            stack += 5;
-                        }
-                        if (Main.rand.Next(10) == 0)
-                        {
-                            stack += 5;
-                        }
-                        if (Main.rand.Next(15) == 0)
-                        {
-                            stack += 5;
                         }
                     }
                     else if (Main.rand.Next(20) == 0)
@@ -1050,7 +1043,7 @@ namespace AAMod
                             case 4: result=178; return;
                             default: result=182; return;
                         }
-                        stack += 15;
+
                     }
                 }
             }
@@ -1069,17 +1062,6 @@ namespace AAMod
                 resultType = result;
                 resultStack = stack;
             }
-            /*
-            if (result > 0)
-			{
-				Vector2 vector = Main.ReverseGravitySupport(Main.MouseScreen, 0f) + Main.screenPosition;
-				int number = Item.NewItem((int)vector.X, (int)vector.Y, 1, 1, resultType, resultStack, false, -1, false, false);
-				if (Main.netMode == 1)
-				{
-					NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
-				}
-			}
-            */
 		}
     }
 

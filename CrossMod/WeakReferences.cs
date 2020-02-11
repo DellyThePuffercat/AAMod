@@ -1,0 +1,941 @@
+﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using Terraria.ModLoader;
+using AAMod.Items.Vanity.Mask;
+using AAMod.Items.BossSummons;
+using AAMod.Items.Blocks;
+using AAMod.Items.Flasks;
+using AAMod.Items.Usable;
+using AAMod.Items.Materials;
+using Terraria;
+
+namespace AAMod.Globals
+{
+    internal class WeakReferences
+    {
+        public static void PerformModSupport()
+        {
+            PerformHealthBarSupport();
+            PerformBossChecklistSupport();
+            PerformCencusSupport();
+        }
+
+        private static void PerformHealthBarSupport()
+        {
+            Mod yabhb = ModLoader.GetMod("FKBossHealthBar");
+
+            if (yabhb != null)
+            {
+                // Mushroom Monarch
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/MBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/MBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/MBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Firebrick,
+                    Color.Firebrick,
+                    Color.Firebrick);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("MushroomMonarch"));
+
+                // Feudal Fungus
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/FBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/FBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/FBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.DarkCyan,
+                    Color.DarkCyan,
+                    Color.DarkCyan);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("FeudalFungus"));
+
+                // Grip of Chaos (Red)
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/RGCBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/RGCBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/RGCBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.DarkOrange,
+                    Color.DarkOrange,
+                    Color.DarkOrange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("GripOfChaosRed"));
+
+                // Grip of Chaos (Blue)
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/BGCBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/BGCBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/BGCBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Indigo,
+                    Color.Indigo,
+                    Color.Indigo);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("GripOfChaosBlue"));
+
+                // The Broodmother
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/BMBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/BMBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/BMBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.DarkOrange,
+                    Color.DarkOrange,
+                    Color.DarkOrange);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Broodmother"));
+
+                // Hydra
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/HydraBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/HydraBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/HydraBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Indigo,
+                    Color.Indigo,
+                    Color.Indigo);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Hydra"));
+
+                // Subzero Serpent
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/SSBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/SSBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/SSBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Cyan,
+                    Color.Cyan,
+                    Color.Cyan);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("SerpentHead"));
+
+                // Desert Djinn
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/DDBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/DDBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/DDBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.IndianRed,
+                    Color.IndianRed,
+                    Color.IndianRed);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Djinn"));
+
+                // Rajah
+                string[] rajahTypes = new string[] { "Rajah", "SupremeRajah" };
+                foreach (string rajahType in rajahTypes)
+                {
+                    yabhb.Call("hbStart");
+                    yabhb.Call("hbSetTexture",
+                        AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
+                        AAMod.instance.GetTexture("Healthbars/RajahBarBody"),
+                        AAMod.instance.GetTexture("Healthbars/RajahBarTail"),
+                        AAMod.instance.GetTexture("Healthbars/BarFill"));
+                    yabhb.Call("hbSetColours",
+                        Color.Orange,
+                        Color.Orange,
+                        Color.Orange);
+                    yabhb.Call("hbSetMidBarOffset", -30, 10);
+                    yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                    yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                    yabhb.Call("hbFinishSingle", AAMod.instance.NPCType(rajahType));
+                }             
+
+                // Daybringer
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/DBBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/DBBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/DBBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Cyan,
+                    Color.Cyan,
+                    Color.Cyan);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("DaybringerHead"));
+
+                // Nightcrawler
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/NCBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/NCBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/NCBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.MediumBlue,
+                    Color.MediumBlue,
+                    Color.MediumBlue);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("NightcrawlerHead"));
+
+                // Haruka Yamata
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/HarukaBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/HarukaBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/HarukaBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152));
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Haruka"));
+
+                // Haruka Yamata (Awakened)
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTextureSmall",
+                    AAMod.instance.GetTexture("Healthbars/HarukaBar2Head"),
+                    AAMod.instance.GetTexture("Healthbars/HarukaBar2Body"),
+                    AAMod.instance.GetTexture("Healthbars/HarukaBar2Tail"),
+                    null);
+                yabhb.Call("hbSetColours",
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152));
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("HarukaY"));
+
+                // Wrath Haruka
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTextureSmall",
+                    AAMod.instance.GetTexture("Healthbars/HarukaBar2Head"),
+                    AAMod.instance.GetTexture("Healthbars/HarukaBar2Body"),
+                    AAMod.instance.GetTexture("Healthbars/HarukaBar2Tail"),
+                    null);
+                yabhb.Call("hbSetColours",
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152),
+                    new Color(122, 157, 152));
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("WrathHaruka"));
+
+                // Ashe Akuma
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTextureSmall",
+                    AAMod.instance.GetTexture("Healthbars/AsheBar2Head"),
+                    AAMod.instance.GetTexture("Healthbars/AsheBar2Body"),
+                    AAMod.instance.GetTexture("Healthbars/AsheBar2Tail"),
+                    null);
+                yabhb.Call("hbSetColours",
+                    Color.OrangeRed,
+                    Color.OrangeRed,
+                    Color.OrangeRed);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("AsheA"));
+
+                // Fury Ashe
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTextureSmall",
+                    AAMod.instance.GetTexture("Healthbars/AsheBar2Head"),
+                    AAMod.instance.GetTexture("Healthbars/AsheBar2Body"),
+                    AAMod.instance.GetTexture("Healthbars/AsheBar2Tail"),
+                    null);
+                yabhb.Call("hbSetColours",
+                    Color.OrangeRed,
+                    Color.OrangeRed,
+                    Color.OrangeRed);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("FuryAshe"));
+
+                // Yamata
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/YamataBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/YamataBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/YamataBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Purple,
+                    Color.Purple,
+                    Color.Purple);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Yamata"));
+
+                // Yamata Awakened
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/YamataABarHead"),
+                    AAMod.instance.GetTexture("Healthbars/YamataABarBody"),
+                    AAMod.instance.GetTexture("Healthbars/YamataABarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.MediumVioletRed,
+                    Color.MediumVioletRed,
+                    Color.MediumVioletRed);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("YamataA"));
+
+                // Akuma; Draconian Demon
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/AkumaBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/AkumaBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/AkumaBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Yellow,
+                    Color.Yellow,
+                    Color.Yellow);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Akuma"));
+
+                // Akuma Awakened; Blazing Fury Incarnate
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/AkumaABarHead"),
+                    AAMod.instance.GetTexture("Healthbars/AkumaBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/AkumaABarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.DeepSkyBlue,
+                    Color.DeepSkyBlue,
+                    Color.DeepSkyBlue);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("AkumaA"));
+
+                // Zero
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/ZeroBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/ZeroBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/ZeroBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Red,
+                    Color.Red,
+                    Color.Red);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Zero"));
+
+                // ZER0 PR0T0C0L
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/ZeroABarHead"),
+                    AAMod.instance.GetTexture("Healthbars/ZeroBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/ZeroABarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Red,
+                    Color.Red,
+                    Color.Red);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("ZeroProtocol"));
+            }
+        }
+
+        private static void PerformBossChecklistSupport()
+        {
+            Mod bossChecklist = ModLoader.GetMod("BossChecklist");
+
+            AAMod mod = AAMod.instance;
+
+            if (bossChecklist != null)
+            {
+                #region Mushroom Monarch
+                bossChecklist.Call("AddBoss", 0f, mod.NPCType("MushroomMonarch"), mod,
+                    Lang.BossCheck("MushroomMonarch"),
+                    (Func<bool>)(() => AAWorld.downedMonarch),
+                    ModContent.ItemType<IntimidatingMushroom>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.MonarchTrophy>(),
+                        ModContent.ItemType<MonarchMask>(),
+                        ModContent.ItemType<MonarchBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.MonarchBag>(),
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.HeartyTruffle>(),
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.Mushium>(),
+                        ModContent.ItemType<SporeSac>()
+                    },
+                    Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<IntimidatingMushroom>() + "]" + Lang.BossCheck("MushroomMonarchInfo"),
+                    "The Mushroom Monarch escapes into the sky",
+                    "AAMod/CrossMod/BossChecklist/Monarch",
+                    "AAMod/NPCs/Bosses/MushroomMonarch/MushroomMonarch_Head_Boss");
+                #endregion
+
+                #region Feudal Fungus
+                bossChecklist.Call("AddBoss", 0.1f, mod.NPCType("FeudalFungus"), mod,
+                    Lang.BossCheck("FeudalFungus"),
+                    (Func<bool>)(() => AAWorld.downedFungus),
+                    ModContent.ItemType<ConfusingMushroom>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.FungusTrophy>(),
+                        ModContent.ItemType<FungusMask>(),
+                        ModContent.ItemType<FungusBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.FungusBag>(),
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.MagicTruffle>(),
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>(),
+                        ModContent.ItemType<GlowingSporeSac>()
+                    },
+                    Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<ConfusingMushroom>() + "]" + Lang.BossCheck("FeudalFungusInfo"),
+                    "The Feudal Fungus vanishes",
+                    "AAMod/CrossMod/BossChecklist/Fungus",
+                    "AAMod/NPCs/Bosses/MushroomMonarch/FeudalFungus_Head_Boss");
+                #endregion
+
+                #region Grips
+                bossChecklist.Call("AddBoss", 2f, mod.NPCType("GripOfChaosRed"), mod,
+                    Lang.BossCheck("GripsofChaos"),
+                    (Func<bool>)(() => AAWorld.downedGrips),
+                    ModContent.ItemType<CuriousClaw>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Grips.GripTrophyBlue>(),
+                        ModContent.ItemType<Items.Boss.Grips.GripTrophyRed>(),
+                        ModContent.ItemType<GripMaskBlue>(),
+                        ModContent.ItemType<GripMaskRed>(),
+                        ModContent.ItemType<GripsBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Grips.GripBag>(),
+                        ModContent.ItemType<Items.Boss.Grips.ClawOfChaos>(),
+                        ModContent.ItemType<Items.Boss.Grips.ClawBaton>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("CuriousClaw") + "]" + Lang.BossCheck("or") + "[i:" + AAMod.instance.ItemType("InterestingClaw") + "]" + Lang.BossCheck("atnight"),
+                    "The Grips fly away, having dealt with you",
+                    "AAMod/CrossMod/BossChecklist/Grips",
+                    "AAMod/CrossMod/BossChecklist/GripsHead");
+                #endregion
+
+                #region Truffle Toad
+                bossChecklist.Call("AddBoss", 2.5f, mod.NPCType("TruffleToad"), mod,
+                    Lang.BossCheck("TruffleToad"),
+                    (Func<bool>)(() => AAWorld.downedToad),
+                    ModContent.ItemType<Toadstool>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Toad.ToadTrophy>(),
+                        ModContent.ItemType<ToadMask>(),
+                        ModContent.ItemType<ToadBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Toad.ToadBag>(),
+                        ModContent.ItemType<Items.Boss.Toad.ToadLeg>(),
+                        ModContent.ItemType<Items.Boss.Toad.ToadTongue>(),
+                        ModContent.ItemType<Items.Boss.Toad.Todegun>(),
+                        ModContent.ItemType<Items.Boss.Toad.MushrockStaff>(),
+                        ModContent.ItemType<GlowingSporeSac>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Toadstool") + "]" + Lang.BossCheck("TruffleToadInfo"),
+                    "The Truffle Toad croaks, then vanishes",
+                    "AAMod/CrossMod/BossChecklist/Toad",
+                    "AAMod/NPCs/Bosses/Toad/TruffleToad_Head_Boss");
+                #endregion
+
+                #region Broodmother
+                bossChecklist.Call("AddBoss", 3.5f, mod.NPCType("Broodmother"), mod,
+                    Lang.BossCheck("Broodmother"),
+                    (Func<bool>)(() => AAWorld.downedBrood),
+                    ModContent.ItemType<DragonBell>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Broodmother.BroodmotherTrophy>(),
+                        ModContent.ItemType<BroodmotherMask>(),
+                        ModContent.ItemType<BroodBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Broodmother.BroodBag>(),
+                        ModContent.ItemType<Items.Boss.Broodmother.DragonCape>(),
+                        ModContent.ItemType<Items.Boss.Broodmother.BroodScale>(),
+                        ModContent.ItemType<Incinerite>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DragonBell") + "]" + Lang.BossCheck("BroodmotherInfo"),
+                    "The Broodmother returns to the fiery depths",
+                    "AAMod/CrossMod/BossChecklist/Brood",
+                    "AAMod/NPCs/Bosses/Broodmother/Broodmother_Head_Boss");
+                #endregion
+
+                #region Hydra
+                bossChecklist.Call("AddBoss", 3.5f, mod.NPCType("Hydra"), mod,
+                    Lang.BossCheck("Hydra"),
+                    (Func<bool>)(() => AAWorld.downedHydra),
+                    ModContent.ItemType<HydraChow>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Hydra.HydraTrophy>(),
+                        ModContent.ItemType<HydraMask1>(),
+                        ModContent.ItemType<HydraBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Hydra.HydraBag>(),
+                        ModContent.ItemType<Items.Boss.Hydra.HydraPendant>(),
+                        ModContent.ItemType<Items.Boss.Hydra.HydraHide>(),
+                        ModContent.ItemType<Abyssium>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("HydraChow") + "]" + Lang.BossCheck("HydraInfo"),
+                    "The Hydra slinks back into her dark lair",
+                    "AAMod/CrossMod/BossChecklist/Hydra",
+                    "AAMod/NPCs/Bosses/Hydra/HydraHead1_Head_Boss",
+                    null);
+                #endregion
+
+                #region Serpent
+                bossChecklist.Call("AddBoss", 5.5f, mod.NPCType("SerpentHead"), mod,
+                    Lang.BossCheck("SubzeroSerpent"),
+                    (Func<bool>)(() => AAWorld.downedSerpent),
+                    ModContent.ItemType<SubzeroCrystal>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Serpent.SerpentTrophy>(),
+                        ModContent.ItemType<SerpentMask>(),
+                        ModContent.ItemType<SerpentBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Serpent.SerpentBag>(),
+                        ModContent.ItemType<Items.Boss.Serpent.ArcticMedallion>(),
+                        ModContent.ItemType<Items.Boss.Serpent.BlizzardBuster>(),
+                        ModContent.ItemType<Items.Boss.Serpent.Icepick>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SerpentSpike>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SerpentSting>(),
+                        ModContent.ItemType<Items.Boss.Serpent.Sickle>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SickleShot>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SnakeStaff>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SnowflakeShuriken>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SubzeroSlasher>(),
+                        ModContent.ItemType<SnowMana>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("SubzeroCrystal") + "]" + Lang.BossCheck("SubzeroSerpentInfo"),
+                    "The Subzero Serpent burrows back down into the snow",
+                    "AAMod/CrossMod/BossChecklist/Serpent1",
+                    "AAMod/NPCs/Bosses/Serpent/SerpentHead_Head_Boss");
+                #endregion
+
+                #region Djinn
+                bossChecklist.Call("AddBoss", 5.5f, mod.NPCType("Djinn"), mod,
+                    Lang.BossCheck("DesertDjinn"),
+                    (Func<bool>)(() => AAWorld.downedDjinn),
+                    ModContent.ItemType<DjinnLamp>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Djinn.DjinnTrophy>(),
+                        ModContent.ItemType<DjinnMask>(),
+                        ModContent.ItemType<DjinnBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Djinn.DjinnBag>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SandstormMedallion>(),
+                        ModContent.ItemType<Items.Boss.Djinn.DjinnBag>(),
+                        ModContent.ItemType<Items.Boss.Djinn.Djinnerang>(),
+                        ModContent.ItemType<Items.Boss.Djinn.Sandagger>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SandLamp>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SandScepter>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SandstormCrossbow>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SultanScimitar>(),
+                        ModContent.ItemType<DesertMana>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DjinnLamp") + "]" + Lang.BossCheck("DesertDjinnInfo"),
+                    "The Desert Djinn flexes upon you triumphantly",
+                    "AAMod/CrossMod/BossChecklist/Djinn",
+                    "AAMod/NPCs/Bosses/Djinn/Djinn_Head_Boss");
+                #endregion
+
+                #region Sagittarius
+                bossChecklist.Call("AddBoss", 5.7f, mod.NPCType("Sagittarius"), mod,
+                    Lang.BossCheck("Sagittarius"),
+                    (Func<bool>)(() => AAWorld.downedSag),
+                    ModContent.ItemType<Lifescanner>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagTrophy>(),
+                        ModContent.ItemType<SagMask>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagBag>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagShield>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.Legg>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.NeutronStaff>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagCore>(),
+                        ModContent.ItemType<Doomite>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Lifescanner") + "]" + Lang.BossCheck("SagittariusInfo"),
+                    "Sagittarius gallops off into the endless darkness...",
+                    "AAMod/CrossMod/BossChecklist/Sag",
+                    "AAMod/NPCs/Bosses/Sagittarius/Sagittarius_Head_Boss");
+                #endregion
+
+                #region Rajah Rabbit
+                bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("Rajah"), mod,
+                    Lang.BossCheck("RajahRabbit"),
+                    (Func<bool>)(() => AAWorld.downedRajah),
+                    ModContent.ItemType<GoldenCarrot>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Rajah.RajahTrophy>(),
+                        ModContent.ItemType<RajahMask>(),
+                        ModContent.ItemType<RajahBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Rajah.RajahBag>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RajahSash>(),
+                        ModContent.ItemType<Items.Boss.Rajah.BaneOfTheBunny>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Punisher>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Bunzooka>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RoyalScepter>(),
+                        ModContent.ItemType<Items.Boss.Rajah.CottonCane>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RabbitcopterEars>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RajahPelt>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenCarrot") + "]" + Lang.BossCheck("RajahRabbitInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Rajah",
+                    "AAMod/NPCs/Bosses/Rajah/Rajah_Head_Boss");
+                #endregion
+
+                #region Equinox Worms
+                bossChecklist.Call("AddBoss", 15f, mod.NPCType("DaybringerHead"), mod,
+                    Lang.BossCheck("NightcrawlerDaybringer"),
+                    (Func<bool>)(() => AAWorld.downedEquinox),
+                    ModContent.ItemType<EquinoxWorm>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Equinox.DBTrophy>(),
+                        ModContent.ItemType<Items.Boss.Equinox.NCTrophy>(),
+                        ModContent.ItemType<DaybringerMask>(),
+                        ModContent.ItemType<NightcrawlerMask>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Equinox.EquinoxBag>(),
+                        ModContent.ItemType<Items.Boss.Equinox.RadiantStar>(),
+                        ModContent.ItemType<Items.Boss.Equinox.DarkVoid>(),
+                        ModContent.ItemType<Stardust>(),
+                        ModContent.ItemType<DarkEnergy>(),
+                        ModContent.ItemType<DarkmatterOre>(),
+                        ModContent.ItemType<RadiumOre>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("EquinoxWorm") + "]",
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Equinox",
+                    "AAMod/CrossMod/BossChecklist/EquinoxHead");
+                #endregion
+
+                #region Ashe & Haruka
+                bossChecklist.Call("AddBoss", 15.9f, mod.NPCType("Ashe"), mod,
+                    Lang.BossCheck("SistersofDiscord"),
+                    (Func<bool>)(() => AAWorld.downedSisters),
+                    ModContent.ItemType<FlamesOfAnarchy>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.AH.AsheTrophy>(),
+                        ModContent.ItemType<Items.Boss.AH.HarukaTrophy>(),
+                        ModContent.ItemType<SistersBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.AH.AHBag>(),
+                        ModContent.ItemType<Items.Boss.AH.HeartOfPassion>(),
+                        ModContent.ItemType<Items.Boss.AH.HeartOfSorrow>(),
+                        ModContent.ItemType<Items.Boss.AH.AshRain>(),
+                        ModContent.ItemType<Items.Boss.AH.FuryFlame>(),
+                        ModContent.ItemType<Items.Boss.AH.FireSpiritStaff>(),
+                        ModContent.ItemType<Items.Boss.AH.AsheSatchel>(),
+                        ModContent.ItemType<Items.Boss.AH.HarukaKunai>(),
+                        ModContent.ItemType<Items.Boss.AH.Masamune>(),
+                        ModContent.ItemType<Items.Boss.AH.MizuArashi>(),
+                        ModContent.ItemType<Items.Boss.AH.HarukaBox>()
+                    },
+                    Lang.BossCheck("Usethe") + "[i:" + AAMod.instance.ItemType("FlamesOfAnarchy") + "]",
+                    null,
+                    "AAMod/CrossMod/BossChecklist/AH",
+                    "AAMod/CrossMod/BossChecklist/AHHead");
+                #endregion
+
+                #region Akuma
+                bossChecklist.Call("AddBoss", 16.1f, mod.NPCType("Akuma"), mod,
+                    Lang.BossCheck("Akuma"),
+                    (Func<bool>)(() => AAWorld.downedAkuma),
+                    ModContent.ItemType<DraconianSigil>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Akuma.AkumaTrophy>(),
+                        ModContent.ItemType<AkumaMask>(),
+                        ModContent.ItemType<AkumaBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Akuma.ReignOfFire>(),
+                        ModContent.ItemType<Items.Boss.Akuma.DragonSlasher>(),
+                        ModContent.ItemType<Items.Boss.Akuma.Daycrusher>(),
+                        ModContent.ItemType<Items.Boss.Akuma.SunSpear>(),
+                        ModContent.ItemType<Items.Boss.Akuma.Solar>(),
+                        ModContent.ItemType<Items.Boss.Akuma.MorningGlory>(),
+                        ModContent.ItemType<Items.Boss.Akuma.RadiantDawn>(),
+                        ModContent.ItemType<Items.Boss.Akuma.YOTD>(),
+                        ModContent.ItemType<Items.Boss.Akuma.DaybreakArrow>(),
+                        ModContent.ItemType<Items.Boss.Akuma.Dawnstrike>(),
+                        ModContent.ItemType<Items.Boss.Akuma.SunStorm>(),
+                        ModContent.ItemType<Items.Boss.Akuma.Daystorm>(),
+                        ModContent.ItemType<Items.Boss.Akuma.LungStaff>(),
+                        ModContent.ItemType<Items.Boss.Akuma.AkumaTerratool>(),
+                        ModContent.ItemType<Items.Boss.Akuma.CrucibleScale>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DraconianSigil") + "]" + Lang.BossCheck("AkumaInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Akuma",
+                    "AAMod/NPCs/Bosses/Akuma/Akuma_Head_Boss");
+
+                bossChecklist.Call("AddBoss", 16.2f, mod.NPCType("AkumaA"), mod,
+                    "Akuma Awakened",
+                    (Func<bool>)(() => AAWorld.downedAkuma),
+                    ModContent.ItemType<DraconianRune>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Akuma.AkumaATrophy>(),
+                        ModContent.ItemType<AkumaAMask>(),
+                        ModContent.ItemType<AkumaABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Akuma.AkumaBag>(),
+                        ModContent.ItemType<Items.Boss.Akuma.TaiyangBaolei>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DraconianRune") + "]" + Lang.BossCheck("AkumaInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/AkumaA",
+                    "AAMod/NPCs/Bosses/Akuma/Awakened/AkumaA_Head_Boss",
+                    (Func<bool>)(() => AAWorld.downedAkuma && Main.expertMode));
+                #endregion
+
+                #region Yamata
+                bossChecklist.Call("AddBoss", 16.3f, mod.NPCType("Yamata"), mod,
+                    Lang.BossCheck("Yamata"),
+                    (Func<bool>)(() => AAWorld.downedYamata),
+                    ModContent.ItemType<DreadSigil>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Yamata.YamataTrophy>(),
+                        ModContent.ItemType<YamataMask>(),
+                        ModContent.ItemType<YamataBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Yamata.AbyssalYari>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Hydraslayer>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Flairdra>(),
+                        ModContent.ItemType<Items.Boss.Yamata.HydraStabber>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Crescent>(),
+                        ModContent.ItemType<Items.Boss.Yamata.AE>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Darksprayer>(),
+                        ModContent.ItemType<Items.Boss.Yamata.FallingTwilight>(),
+                        ModContent.ItemType<Items.Boss.Yamata.MidnightWrath>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Sevenshot>(),
+                        ModContent.ItemType<Items.Boss.Yamata.ThrowingCrescent>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Toxibomb>(),
+                        ModContent.ItemType<Items.Boss.Yamata.YamataTerratool>(),
+                        ModContent.ItemType<Items.Boss.Yamata.DreadScale>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DreadSigil") + "]" + Lang.BossCheck("YamataInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Yamata",
+                    "AAMod/NPCs/Bosses/Yamata/YamataHead_Head_Boss");
+
+                bossChecklist.Call("AddBoss", 16.4f, mod.NPCType("YamataA"), mod,
+                    "Yamata Awakened",
+                    (Func<bool>)(() => AAWorld.downedYamata),
+                    ModContent.ItemType<DreadRune>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Yamata.YamataATrophy>(),
+                        ModContent.ItemType<YamataAMask>(),
+                        ModContent.ItemType<YamataABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Yamata.YamataBag>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Naitokurosu>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DreadRune") + "]" + Lang.BossCheck("YamataInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/YamataA",
+                    "AAMod/NPCs/Bosses/Yamata/Awakened/YamataAHead_Head_Boss",
+                    (Func<bool>)(() => AAWorld.downedYamata && Main.expertMode));
+                #endregion
+                
+                #region Zero
+                bossChecklist.Call("AddBoss", 16.5f, mod.NPCType("Zero"), mod,
+                    Lang.BossCheck("Zero"),
+                    (Func<bool>)(() => AAWorld.downedZero),
+                    ModContent.ItemType<ZeroTesseract>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Zero.ZeroTrophy>(),
+                        ModContent.ItemType<ZeroMask>(),
+                        ModContent.ItemType<ZeroBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Zero.RiftShredder>(),
+                        ModContent.ItemType<Items.Boss.Zero.EventHorizon>(),
+                        ModContent.ItemType<Items.Boss.Zero.Vortex>(),
+                        ModContent.ItemType<Items.Boss.Zero.BHB>(),
+                        ModContent.ItemType<Items.Boss.Zero.GenocideCannon>(),
+                        ModContent.ItemType<Items.Boss.Zero.Gigataser>(),
+                        ModContent.ItemType<Items.Boss.Zero.Neutralizer>(),
+                        ModContent.ItemType<Items.Boss.Zero.OmegaVolley>(),
+                        ModContent.ItemType<Items.Boss.Zero.RealityCannon>(),
+                        ModContent.ItemType<Items.Boss.Zero.TeslaHand>(),
+                        ModContent.ItemType<Items.Boss.Zero.ZeroArrow>(),
+                        ModContent.ItemType<Items.Boss.Zero.Battery>(),
+                        ModContent.ItemType<Items.Boss.Zero.VoidStar>(),
+                        ModContent.ItemType<Items.Boss.Zero.DoomRay>(),
+                        ModContent.ItemType<Items.Boss.Zero.DoomPortal>(),
+                        ModContent.ItemType<Items.Boss.Zero.ZeroTerratool>(),
+                        ModContent.ItemType<Items.Boss.Zero.UnstableSingularity>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ZeroTesseract") + "]" + Lang.BossCheck("ZeroInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Zero",
+                    "AAMod/NPCs/Bosses/Zero/Zero_Head_Boss");
+
+                bossChecklist.Call("AddBoss", 16.6f, mod.NPCType("ZeroProtocol"), mod,
+                    "Zero Protocol",
+                    (Func<bool>)(() => AAWorld.downedZero),
+                    ModContent.ItemType<ZeroRune>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Zero.ZeroATrophy>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Zero.ZeroBag>(),
+                        ModContent.ItemType<Items.Boss.Zero.BrokenCode>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ZeroRune") + "]" + Lang.BossCheck("ZeroInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/ZeroProtocol",
+                    "AAMod/NPCs/Bosses/Zero/Protocol/ZeroProtocol_Head_Boss",
+                    (Func<bool>)(() => AAWorld.downedZero && Main.expertMode));
+                #endregion
+
+                #region Champion Rajah Rabbit
+                bossChecklist.Call("AddBoss", 17.5f, mod.NPCType("SupremeRajah"), mod,
+                    Lang.BossCheck("RajahRabbitRevenge"),
+                    (Func<bool>)(() => AAWorld.downedRajahsRevenge),
+                    ModContent.ItemType<GoldenCarrot>(),
+                    new List<int>
+                    {
+
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.RajahCache>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RajahCape>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.Excalihare>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.BaneOfTheBunnyEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.PunisherEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.FluffyFury>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.BunzookaEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.RabbitsWrath>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.RoyalScepterEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.CottonCaneEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.ChampionPlate>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DiamondCarrot") + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/CRajah",
+                    "AAMod/NPCs/Bosses/Rajah/SupremeRajah_Head_Boss");
+                #endregion
+
+                // SlimeKing = 1f;
+                // EyeOfCthulhu = 2f;
+                // EaterOfWorlds = 3f;
+                // QueenBee = 4f;
+                // Skeletron = 5f;
+                // WallOfFlesh = 6f;
+                // TheTwins = 7f;
+                // TheDestroyer = 8f;
+                // SkeletronPrime = 9f;
+                // Plantera = 10f;
+                // Golem = 11f;
+                // DukeFishron = 12f;
+                // LunaticCultist = 13f;
+                // Moonlord = 14f;
+            }
+        }
+
+        private static void PerformCencusSupport()
+        {
+            Mod censusMod = ModLoader.GetMod("Census");
+            if (censusMod != null)
+            {
+                Mod mod = AAMod.instance;
+                // Here I am using Chat Tags to make my condition even more interesting.
+                // If you localize your mod, pass in a localized string instead of just English.
+                //censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), $"Have [i:{ItemType<Items.ExampleItem>()}] or [i:{ItemType<Items.Placeable.ExampleBlock>()}] in inventory and build a house out of [i:{ItemType<Items.Placeable.ExampleBlock>()}] and [i:{ItemType<Items.Placeable.ExampleWall>()}]");
+
+                censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), "Always available");
+                if (!AAConfigClient.Instance.NoAATownNPC)
+                {
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Mushman"), "After defeating Mushroom Monarch or Feudal Fungus, build a house in a red mushroom biome");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Lovecraftian"), "Eye of Cthulhu defeated");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Samurai"), "Grips of Chaos defeated");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Goblin Slayer"), "Goblin Army is defeated");
+                }
+            }
+        }
+    }
+}

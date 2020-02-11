@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Events;
-using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Rajah;
 using AAMod.NPCs.Enemies.Terrarium.PreHM;
 using AAMod.NPCs.Enemies.Terrarium.Hardmode;
@@ -120,16 +119,15 @@ namespace AAMod
 				npc.defense -= 20;
 			}
 
-            bool shen = npc.type == ModContent.NPCType<Shen>() || npc.type == ModContent.NPCType<ShenA>();
 
-            ApplyDPSDebuff(terraBlaze, shen ? 46 : 26, shen ? 30 : 10, ref npc.lifeRegen, ref damage);
+            ApplyDPSDebuff(terraBlaze, 26, 10, ref npc.lifeRegen, ref damage);
             ApplyDPSDebuff(infinityOverload, 60, 40, ref npc.lifeRegen, ref damage);
             ApplyDPSDebuff(Spear, 5, 5, ref npc.lifeRegen, ref damage);
             ApplyDPSDebuff(InfinityScorch, 80, 40, ref npc.lifeRegen, ref damage);
 
             ApplyDPSDebuff(CursedHellfire, 30, ref npc.lifeRegen);
-            ApplyDPSDebuff(Moonraze, 200, ref npc.lifeRegen);
-            ApplyDPSDebuff(Hydratoxin, (int)npc.velocity.X * (npc.velocity.X > 0?  1 : -1), ref npc.lifeRegen);
+            ApplyDPSDebuff(Moonraze, 100, ref npc.lifeRegen);
+            ApplyDPSDebuff(Hydratoxin, (int)npc.velocity.X * (npc.velocity.X > 0?  1 : -1) / 2, ref npc.lifeRegen);
             ApplyDPSDebuff(Electrified, 40, ref npc.lifeRegen);
             if(npc.lifeMax > 0) ApplyDPSDebuff(FFlames, 40 * (npc.life / npc.lifeMax), ref npc.lifeRegen);
         }
@@ -178,6 +176,15 @@ namespace AAMod
                     npc.defense = 20;
                 }
             }
+        }
+
+        public override bool PreAI(NPC npc)
+        {
+            if(npc.type != 395 && (npc.boss || npc.type == 13 || npc.type == 15))
+            {
+                Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().bossactive = true;
+            }
+            return base.PreAI(npc);
         }
 
         public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
@@ -1392,38 +1399,6 @@ namespace AAMod
             if (NPC.killCount[NPCID.Bunny] >= 1000)
             {
                 RajahType = ModContent.NPCType<SupremeRajah>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 900)
-            {
-                RajahType = ModContent.NPCType<Rajah9>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 800)
-            {
-                RajahType = ModContent.NPCType<Rajah8>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 700)
-            {
-                RajahType = ModContent.NPCType<Rajah7>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] > 600)
-            {
-                RajahType = ModContent.NPCType<Rajah6>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 500)
-            {
-                RajahType = ModContent.NPCType<Rajah5>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 400)
-            {
-                RajahType = ModContent.NPCType<Rajah4>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 300)
-            {
-                RajahType = ModContent.NPCType<Rajah3>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 200)
-            {
-                RajahType = ModContent.NPCType<Rajah2>();
             }
 
             if (Main.netMode != 1)

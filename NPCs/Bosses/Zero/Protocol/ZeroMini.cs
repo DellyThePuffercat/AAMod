@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
@@ -16,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 7000;
+            npc.lifeMax = 5000;
             npc.damage = 100;
             npc.defense = 50;
             npc.knockBackResist = 0f;

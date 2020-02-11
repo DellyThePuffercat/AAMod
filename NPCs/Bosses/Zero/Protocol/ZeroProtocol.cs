@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 600000;
+            npc.lifeMax = 500000;
             npc.damage = 120;
             npc.defense = 70;
             npc.knockBackResist = 0f;
@@ -50,6 +50,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             musicPriority = MusicPriority.BossHigh;
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
+            npc.npcSlots = 200;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

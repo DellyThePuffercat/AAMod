@@ -137,7 +137,8 @@ namespace AAMod.Items.Dev.Invoker
 			item.thrown = false;
 			item.summon = false;
 		}
-        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
+
+		public override void ModifyWeaponDamage(Player player, ref float add, ref float mult, ref float flat)
 		{
 			mult *= InvokerPlayer.ModPlayer(player).BanishDamageMult;
 		}
@@ -278,19 +279,22 @@ namespace AAMod.Items.Dev.Invoker
 				{
 					if(Main.npc[target.realLife].StrikeNPC((int)(damage * .1f), knockback, hitDirection, crit, false, false) < .01f * projectile.damage && Realdamage < Main.npc[target.realLife].lifeMax * .01f)
 					{
-						Realdamage = Main.npc[target.realLife].lifeMax * .01f;
+						Realdamage = Main.npc[target.realLife].lifeMax * .034f;
 					}
 				}
 				else
 				{
 					if(target.StrikeNPC(damage, knockback, hitDirection, crit, false, false) < .01f * projectile.damage)
 					{
-						Realdamage = target.lifeMax * .01f;
+						Realdamage = target.lifeMax * .034f;
 					}
 				}
 			}
 
-			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
+			Realdamage = Main.DamageVar((int)Realdamage);
+
+			//Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
+			Main.player[projectile.owner].addDPS((int)Realdamage);
 
 			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
 			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);

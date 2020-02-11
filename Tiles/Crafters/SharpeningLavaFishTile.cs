@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
-using Terraria.Enums;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -63,12 +62,13 @@ namespace AAMod.Tiles.Crafters
             b = .15f;
         }
 
-        public override void RightClick(int i, int j)
+        public override bool NewRightClick(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];
             player.AddBuff(159, 36000, true);
             player.AddBuff(74, 36000, true);
 			Main.PlaySound(SoundID.Item37, player.position);
+            return true;
         }
 
         public override void MouseOver(int i, int j)

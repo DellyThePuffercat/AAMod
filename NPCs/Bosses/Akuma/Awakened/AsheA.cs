@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.AH.Ashe;
 using System;
 
 namespace AAMod.NPCs.Bosses.Akuma.Awakened
@@ -45,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 projectile.direction = -1;
                 projectile.spriteDirection = -1;
             }
-            else if (projectile.velocity.X > 0)
+            else
             {
                 projectile.direction = 1;
                 projectile.spriteDirection = 1;
@@ -134,6 +133,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 Main.dust[num92].velocity *= 3f;
                 Main.dust[num92].velocity += projectile.DirectionTo(Main.dust[num92].position) * 3f;
             }
+        }
+
+        public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
+        {
+
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 12, 0, 0);
+
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 12, frame, lightColor, true);
+            return false;
         }
 
         public void Frames()

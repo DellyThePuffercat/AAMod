@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 		public bool isAwakened = false;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata");
+            DisplayName.SetDefault("Yamata no Orochi");
             Main.npcFrameCount[npc.type] = 3;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
@@ -360,7 +360,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (npc.life <= 0)
             {
-                CombatText.NewText(npc.getRect(), new Color(45, 46, 70), Lang.BossChat("YamataAHead"), false, false);
+                CombatText.NewText(npc.getRect(), new Color(146, 30, 68), Lang.BossChat("YamataAHead"), false, false);
                 NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<YamataSoul>());
             }
         }

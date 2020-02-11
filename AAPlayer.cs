@@ -2,14 +2,10 @@
 using AAMod.Items;
 using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
-using AAMod.NPCs.Bosses.Athena;
-using AAMod.NPCs.Bosses.Athena.Olympian;
-using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Yamata;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Zero.Protocol;
-using AAMod.NPCs.Bosses.Anubis.Forsaken;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -228,6 +224,8 @@ namespace AAMod
         public bool GreedCharm;
         public bool GreedTalisman;
         public bool OldOneCharm = false;
+        public bool SpellBookofRagnarok;
+        public bool CursedEyeofSoulBinder;
         #endregion
 
         #region debuffs
@@ -311,7 +309,10 @@ namespace AAMod
         public bool AnubisBook = false;
         public bool GivenAnuSummon = false;
 
+        public float spellbookDamage = 1f;
         public float MaxMovespeedboost = 0;
+        public bool bossactive = false;
+        public bool nohitplayer = true;
         #endregion
 
         #endregion
@@ -347,7 +348,9 @@ namespace AAMod
             ResetDebuffEffect();
             ResetPetsEffect();
 
+            spellbookDamage = 1f;
             MaxMovespeedboost = 0;
+            bossactive = false;
 
             //EnemyChecks
             IsGoblin = false;
@@ -500,6 +503,8 @@ namespace AAMod
             Greed2 = false;
             olympianWings = false;
             OldOneCharm = false;
+            SpellBookofRagnarok = false;
+            CursedEyeofSoulBinder = false;
         }
 
         private void ResetBuffEffect()
@@ -594,20 +599,12 @@ namespace AAMod
         public override void UpdateBiomeVisuals()
         {
             bool Underground = player.Center.Y > Main.worldSurface * 16;
-            bool useAthena = NPC.AnyNPCs(ModContent.NPCType<AthenaA>());
-            bool useShenA = NPC.AnyNPCs(ModContent.NPCType<ShenA>());
-            bool useShen = NPC.AnyNPCs(ModContent.NPCType<Shen>()) && !useShenA;
             bool useAkuma = NPC.AnyNPCs(ModContent.NPCType<AkumaA>()) || AkumaAltar;
             bool useYamata = NPC.AnyNPCs(ModContent.NPCType<YamataA>()) || YamataAltar;
-            bool useAnu = NPC.AnyNPCs(ModContent.NPCType<ForsakenAnubis>());
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA && !useAnu;
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA && !useAnu;
-            bool useVoid = (ZoneVoid || VoidUnit) && !useShen && !useShenA && !useAnu;
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma;
+            bool useVoid = (ZoneVoid || VoidUnit);
 
-            player.ManageSpecialBiomeVisuals("AAMod:AnubisSky", useAnu);
-            player.ManageSpecialBiomeVisuals("AAMod:AthenaSky", useAthena);
-            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
-            player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
 
@@ -947,6 +944,10 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (!bossactive)
+            {
+                nohitplayer = true;
+            }
             if (Ronin)
             {
                 player.immune = true;
@@ -1001,7 +1002,7 @@ namespace AAMod
             }
             else
             {
-                Main.sunTexture = mod.GetTexture("Backgrounds/Sun1");
+                Main.sunTexture = ModContent.GetTexture("Terraria/Sun");;
                 Main.sun3Texture = mod.GetTexture("Backgrounds/Sun3");
             }
 
@@ -1639,26 +1640,14 @@ namespace AAMod
             {
                 if (player.velocity.X < -runSpeed && player.velocity.Y == 0f && !player.mount.Active)
                 {
-                    if (AADash == 1)
-                    {
-                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, ModContent.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
-                        Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
-                        Main.dust[dust].velocity.Y = Main.dust[dust].velocity.Y * 0.2f;
-                        Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
-                    }
+
                 }
             }
             else if (player.controlRight && player.velocity.X < player.accRunSpeed && player.dashDelay >= 0)
             {
                 if (player.velocity.X > runSpeed && player.velocity.Y == 0f && !player.mount.Active)
                 {
-                    if (AADash == 1)
-                    {
-                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, ModContent.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
-                        Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
-                        Main.dust[dust].velocity.Y = Main.dust[dust].velocity.Y * 0.2f;
-                        Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
-                    }
+
                 }
             }
         }
@@ -1678,21 +1667,7 @@ namespace AAMod
                 int num11 = 20;
                 if (AADash == 1)
                 {
-                    for (int k = 0; k < 2; k++)
-                    {
-                        int num12;
-                        if (player.velocity.Y == 0f)
-                        {
-                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 8, ModContent.DustType<Feather>(), 0f, 0f, 100, default, 1);
-                        }
-                        else
-                        {
-                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height / 2 - 8f), player.width, 16, ModContent.DustType<Feather>(), 0f, 0f, 100, default, 1);
-                        }
-                        Main.dust[num12].velocity *= 0.1f;
-                        Main.dust[num12].scale *= 1f + Main.rand.Next(20) * 0.01f;
-                        Main.dust[num12].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
-                    }
+                    
                 }
                 if (AADash > 0)
                 {
@@ -1724,65 +1699,7 @@ namespace AAMod
             {
                 if (AADash == 1)
                 {
-                    int direction = 0;
-                    bool DashAttempt = false;
-                    if (AADashTime > 0)
-                    {
-                        AADashTime--;
-                    }
-                    if (AADashTime < 0)
-                    {
-                        AADashTime++;
-                    }
-                    if (player.controlRight && player.releaseRight && player.velocity.Y != 0)
-                    {
-                        if (AADashTime > 0)
-                        {
-                            direction = 1;
-                            DashAttempt = true;
-                            AADashTime = 0;
-                        }
-                        else
-                        {
-                            AADashTime = 15;
-                        }
-                    }
-                    else if (player.controlLeft && player.releaseLeft && player.velocity.Y != 0)
-                    {
-                        if (AADashTime < 0)
-                        {
-                            direction = -1;
-                            DashAttempt = true;
-                            AADashTime = 0;
-                        }
-                        else
-                        {
-                            AADashTime = -15;
-                        }
-                    }
-                    if (DashAttempt)
-                    {
-                        player.velocity.X = 14.5f * direction;
-                        Point point = (player.Center + new Vector2(direction * player.width / 2 + 2, player.gravDir * -player.height / 2f + player.gravDir * 2f)).ToTileCoordinates();
-                        Point point2 = (player.Center + new Vector2(direction * player.width / 2 + 2, 0f)).ToTileCoordinates();
-                        if (WorldGen.SolidOrSlopedTile(point.X, point.Y) || WorldGen.SolidOrSlopedTile(point2.X, point2.Y))
-                        {
-                            player.velocity.X = player.velocity.X / 2f;
-                        }
-                        player.dashDelay = -1;
-                        for (int num17 = 0; num17 < 2; num17++)
-                        {
-                            int num18 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, ModContent.DustType<Feather>(), 0f, 0f, 100, default, 1);
-                            Dust expr_CDB_cp_0 = Main.dust[num18];
-                            expr_CDB_cp_0.position.X += Main.rand.Next(-5, 6);
-                            Dust expr_D02_cp_0 = Main.dust[num18];
-                            expr_D02_cp_0.position.Y += Main.rand.Next(-5, 6);
-                            Main.dust[num18].velocity *= 0.2f;
-                            Main.dust[num18].scale *= .1f + Main.rand.Next(20) * 0.01f;
-                            Main.dust[num18].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
-                        }
-                        return;
-                    }
+
                 }
             }
         }
@@ -2214,7 +2131,7 @@ namespace AAMod
                             player.QuickSpawnItem(mod.ItemType("GibsJet"));
                         }
 
-                        if (dropType >= 2)
+                        if (dropType >= 3)
                         {
                             player.QuickSpawnItem(Main.rand.Next(2) == 0 ? mod.ItemType("Skullshot") : mod.ItemType("GibsFemur"));
                         }
@@ -3070,6 +2987,10 @@ namespace AAMod
 
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
 		{
+            if (bossactive)
+            {
+                nohitplayer = false;
+            }
             if (ShieldUp)
 			{
 				return false;
@@ -3085,19 +3006,19 @@ namespace AAMod
                 {
                     if (player.inventory[i].type == 71)
                     {
-                        num += (long)player.inventory[i].stack;
+                        num += player.inventory[i].stack;
                     }
                     if (player.inventory[i].type == 72)
                     {
-                        num += (long)(player.inventory[i].stack * 100);
+                        num += player.inventory[i].stack * 100;
                     }
                     if (player.inventory[i].type == 73)
                     {
-                        num += (long)(player.inventory[i].stack * 10000);
+                        num += player.inventory[i].stack * 10000;
                     }
                     if (player.inventory[i].type == 74)
                     {
-                        num += (long)(player.inventory[i].stack * 1000000);
+                        num += player.inventory[i].stack * 1000000;
                     }
                 }
                 if(num >= damage * 10000)
@@ -3151,6 +3072,7 @@ namespace AAMod
             Unstable = false;
             Spear = false;
             MaxMovespeedboost = 0;
+            spellbookDamage = 1f;
         }
 
         public override void MeleeEffects(Item item, Rectangle hitbox)

@@ -1,11 +1,9 @@
 ﻿using Terraria.ModLoader.Config;
-using System;
 using System.IO;
 using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
 using System.ComponentModel;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace AAMod
@@ -24,7 +22,7 @@ namespace AAMod
         [Tooltip("$Mods.AAMod.Common.DisableBossDialogueInfo")]
         public bool NoBossDialogue;
 
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         [Label("$Mods.AAMod.Common.AAStyleMainPage")]
         [Tooltip("$Mods.AAMod.Common.AAStyleMainPageInfo")]
         public bool AAStyleMainPage;
@@ -58,9 +56,9 @@ namespace AAMod
 			{
                 try
                 {
-                    Configuration.Get<Dictionary<int, int>>("LuckyOreMine", ref LuckyOre);
-                    Configuration.Get<Dictionary<int, int>>("LuckyPotionGet", ref LuckyPotion);
-                    Configuration.Get<List<int>>("RareNpcList", ref ListRareNpc);
+                    Configuration.Get("LuckyOreMine", ref LuckyOre);
+                    Configuration.Get("LuckyPotionGet", ref LuckyPotion);
+                    Configuration.Get("RareNpcList", ref ListRareNpc);
                 }
 				catch
                 {

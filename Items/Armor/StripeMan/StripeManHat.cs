@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.StripeMan
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("StripeMan Lucky Hat");
+			DisplayName.SetDefault("Stripeman's Lucky Hat");
 			Tooltip.SetDefault(@"Provides light when worn
 Get the effect of Architect Gizmo Pack
 When digging stones, you may get ore from them
@@ -61,7 +61,7 @@ You can put any sand into the Extractinator");
 		public override void UpdateArmorSet(Player player)
 		{
 			string active = "";
-			if(player.GetModPlayer<AAPlayer>().StripeCrasyLucky)
+			if (player.GetModPlayer<AAPlayer>().StripeCrasyLucky)
 			{
 				active = Language.GetTextValue("Mods.AAMod.Common.StripeManSetBonusactive");
 			}

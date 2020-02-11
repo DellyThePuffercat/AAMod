@@ -14,21 +14,21 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Morning Glory");
-            Tooltip.SetDefault("Explodes when it sticks into an enemy");
+            Tooltip.SetDefault("Splits into 4 additional phantom piercing spears on throw");
         }
 
         public override void SetDefaults()
         {
 
             item.shoot = mod.ProjectileType("MorningGlory");
-            item.shootSpeed = 10f;
-            item.damage = 250;
+            item.shootSpeed = 24f;
+            item.damage = 197;
             item.knockBack = 4f;
             item.melee = true;
             item.useStyle = 1;
             item.UseSound = SoundID.Item20;
-            item.useAnimation = 13;
-            item.useTime = 13;
+            item.useAnimation = 19;
+            item.useTime = 19;
             item.width = 30;
             item.height = 30;
             item.noUseGraphic = true;

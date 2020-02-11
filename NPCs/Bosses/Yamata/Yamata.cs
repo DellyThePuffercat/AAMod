@@ -63,15 +63,8 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.height = 90;
             npc.aiStyle = -1;
             npc.damage = 0;
-            npc.lifeMax = 550000;
-            if (Main.expertMode)
-            {
-                npc.value = Item.sellPrice(0, 0, 0, 0);
-            }
-            else
-            {
-                npc.value = Item.sellPrice(0, 30, 0, 0);
-            }
+            npc.lifeMax = 400000;
+            npc.value = Item.sellPrice(0, 30, 0, 0);
             npc.defense = 999999;
             npc.knockBackResist = 0f;
             npc.boss = true;
