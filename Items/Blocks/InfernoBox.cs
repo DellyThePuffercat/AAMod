@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Inferno Surface Music Box");
-            Tooltip.SetDefault(@"Plays 'Flame-Razed Rock' by Karamitasu");
+            Tooltip.SetDefault(@"Plays 'Scorched Landscape' by Quicksilvur");
         }
 
 		public override void SetDefaults()
