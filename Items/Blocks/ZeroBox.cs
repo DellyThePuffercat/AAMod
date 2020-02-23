@@ -10,7 +10,7 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero Music Box");
-            Tooltip.SetDefault("Plays 'Clockwork Catastrophe' by OmegaFerretMusic");
+            Tooltip.SetDefault("Plays 'Entropy's Envoy' by charliedebnam");
         }
 
 		public override void SetDefaults()
