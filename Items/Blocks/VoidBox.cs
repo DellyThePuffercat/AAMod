@@ -11,7 +11,7 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Void Music Box");
-            Tooltip.SetDefault(@"Plays 'What Once Was' by OmegaFerretMusic");
+            Tooltip.SetDefault(@"Plays 'gaze into darkness' by charliedebnam");
         }
 
         public override void SetDefaults()
